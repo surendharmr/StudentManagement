@@ -3,14 +3,11 @@ package com.student.manager.implementation;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
 import com.constants.ProjectConstants;
 import com.entity.beans.RegistrationBean;
 import java.io.StringReader;
@@ -18,7 +15,7 @@ import org.xml.sax.InputSource;
 
 public class RegistrationBeanCreator {
 
-    RegistrationBean registerBean;
+    RegistrationBean registrationBean;
     public String type;
     public String body;
 
@@ -50,7 +47,7 @@ public class RegistrationBeanCreator {
                 UserHandler userhandler = new UserHandler();
                 StringReader sr = new StringReader(inputXMLBody);
                 InputSource is = new InputSource(sr);
-                registerBean = new RegistrationBean();
+                registrationBean = new RegistrationBean();
                 saxParser.parse(is, userhandler);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -60,7 +57,7 @@ public class RegistrationBeanCreator {
     }
 
     public RegistrationBean createRegistrationBeanObject() {
-        return registerBean;
+        return registrationBean;
     }
 
     class UserHandler extends DefaultHandler {
@@ -86,8 +83,8 @@ public class RegistrationBeanCreator {
             if (qName.equalsIgnoreCase("student")) {
             } else if (qName.equalsIgnoreCase("staff")) {
                 bStaff = true;
-                registerBean.setIsStaff(true);
-                registerBean.setIsTeachingStaff(Boolean.parseBoolean(attributes.getValue("isTeaching")));
+                registrationBean.setIsStaff(true);
+                registrationBean.setIsTeachingStaff(Boolean.parseBoolean(attributes.getValue("isTeaching")));
             } else if (qName.equalsIgnoreCase("firstname")) {
                 bFirstName = true;
             } else if (qName.equalsIgnoreCase("lastname")) {
@@ -128,19 +125,19 @@ public class RegistrationBeanCreator {
         public void characters(char ch[], int start, int length) throws SAXException {
             if (bFirstName) {
                 System.out.println("First Name: " + new String(ch, start, length));
-                registerBean.setFirstName(new String(ch, start, length));
+                registrationBean.setFirstName(new String(ch, start, length));
                 bFirstName = false;
             } else if (bLastName) {
                 System.out.println("Last Name: " + new String(ch, start, length));
-                registerBean.setLastName(new String(ch, start, length));
+                registrationBean.setLastName(new String(ch, start, length));
                 bLastName = false;
             } else if (bMiddleName) {
                 System.out.println("Middle Name: " + new String(ch, start, length));
-                registerBean.setMiddleName(new String(ch, start, length));
+                registrationBean.setMiddleName(new String(ch, start, length));
                 bMiddleName = false;
             } else if (bAge) {
                 System.out.println("Age: " + new String(ch, start, length));
-                registerBean.setAge(Integer.parseInt(new String(ch, start, length)));
+                registrationBean.setAge(Integer.parseInt(new String(ch, start, length)));
                 bAge = false;
             } else if (bDob) {
                 System.out.println("DOB: " + new String(ch, start, length));
@@ -150,7 +147,7 @@ public class RegistrationBeanCreator {
                     Date date = formatter.parse(new String(ch, start, length));
                     // System.out.println(date);
                     // System.out.println(formatter.format(date));
-                    registerBean.setDob(date);
+                    registrationBean.setDob(date);
                 } catch (ParseException e) {
                     e.printStackTrace();
                 }
@@ -158,35 +155,35 @@ public class RegistrationBeanCreator {
                 bDob = false;
             } else if (bFather) {
                 System.out.println("Father: " + new String(ch, start, length));
-                registerBean.setFatherName(new String(ch, start, length));
+                registrationBean.setFatherName(new String(ch, start, length));
                 bFather = false;
             } else if (bMother) {
                 System.out.println("Mother: " + new String(ch, start, length));
-                registerBean.setMotherName(new String(ch, start, length));
+                registrationBean.setMotherName(new String(ch, start, length));
                 bMother = false;
             } else if (bSpouse) {
                 System.out.println("Mother: " + new String(ch, start, length));
-                registerBean.setSpouseName(new String(ch, start, length));
+                registrationBean.setSpouseName(new String(ch, start, length));
                 bSpouse = false;
             } else if (bMobileNumber) {
                 System.out.println("Mobile Number: " + new String(ch, start, length));
-                registerBean.setMobileNumber(new String(ch, start, length));
+                registrationBean.setMobileNumber(new String(ch, start, length));
                 bMobileNumber = false;
             } else if (bAddress) {
                 System.out.println("Address: " + new String(ch, start, length));
-                registerBean.setAddress(new String(ch, start, length));
+                registrationBean.setAddress(new String(ch, start, length));
                 bAddress = false;
             } else if (bPincode) {
                 System.out.println("Pincode: " + new String(ch, start, length));
-                registerBean.setPincode(new String(ch, start, length));
+                registrationBean.setPincode(new String(ch, start, length));
                 bPincode = false;
             } else if (bEmailid) {
                 System.out.println("emailid: " + new String(ch, start, length));
-                registerBean.setEmailiId(new String(ch, start, length));
+                registrationBean.setEmailiId(new String(ch, start, length));
                 bEmailid = false;
             } else if (bPassword) {
                 System.out.println("Password: " + new String(ch, start, length));
-                registerBean.setPassword(new String(ch, start, length));
+                registrationBean.setPassword(new String(ch, start, length));
                 bPassword = false;
             }
         }
