@@ -8,7 +8,7 @@ import com.student.database.impl.RegisterDBImpl;
 import com.student.manager.implementation.RegistrationBeanCreator;
 
 public class RegistrationActionController {
-
+// This is to create the Student as well as Staff record creation
     public String actionController(String type, String requestBody) {
         try {
             if (type.equals(StudentConstants.STUDENT_CREATE)) {
