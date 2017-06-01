@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import com.constants.SQLQueryConstants;
 
-import com.student.beans.RegistrationBean;
+import com.entity.beans.RegistrationBean;
 import com.student.db.connection.manager.MySQLConnectionCreator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,7 +14,7 @@ public class RegisterDBImpl {
 
     Connection connection;
 
-    public void createStudent(RegistrationBean registrationBean) throws SQLException {
+    public void createStaffOrStudent(RegistrationBean registrationBean) throws SQLException {
         connection = MySQLConnectionCreator.getDBConnection();
         PreparedStatement preparedStmt = null;
         preparedStmt = createPreparedStatement(preparedStmt, registrationBean);
@@ -48,8 +48,8 @@ public class RegisterDBImpl {
             preparedStmt.setString(1, registrationBean.getFirstName());
             preparedStmt.setString(2, registrationBean.getLastName());
             preparedStmt.setString(3, registrationBean.getMiddleName());
-            preparedStmt.setInt(4, registrationBean.getStudentAge());
-            preparedStmt.setDate(5, new java.sql.Date(registrationBean.getStudentDob().getTime()));
+            preparedStmt.setInt(4, registrationBean.getAge());
+            preparedStmt.setDate(5, new java.sql.Date(registrationBean.getDob().getTime()));
             preparedStmt.setString(6, registrationBean.getFatherName());
             preparedStmt.setString(7, registrationBean.getMotherName());
             preparedStmt.setString(8, registrationBean.getMobileNumber());

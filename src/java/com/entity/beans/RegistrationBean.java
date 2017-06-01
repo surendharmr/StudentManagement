@@ -1,4 +1,4 @@
-package com.student.beans;
+package com.entity.beans;
 
 import java.util.Date;
 
@@ -7,10 +7,10 @@ public class RegistrationBean {
     private String firstName;
     private String lastName;
     private String middleName;
-    private int studentAge;
+    private int age;
     private boolean isStaff;
     private boolean isTeachingStaff;
-    private Date studentDob;
+    private Date dob;
     private String fatherName;
     private String motherName;
     private String spouseName;
@@ -44,12 +44,12 @@ public class RegistrationBean {
         this.middleName = middleName;
     }
 
-    public int getStudentAge() {
-        return studentAge;
+    public int getAge() {
+        return age;
     }
 
-    public void setStudentAge(int studentAge) {
-        this.studentAge = studentAge;
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public boolean isIsStaff() {
@@ -68,12 +68,12 @@ public class RegistrationBean {
         this.isTeachingStaff = isTeachingStaff;
     }
 
-    public Date getStudentDob() {
-        return studentDob;
+    public Date getDob() {
+        return dob;
     }
 
-    public void setStudentDob(Date studentDob) {
-        this.studentDob = studentDob;
+    public void setDob(Date dob) {
+        this.dob = dob;
     }
 
     public String getFatherName() {
